@@ -385,6 +385,108 @@
 .handwritten-underline {
   margin-top: -8px;
 }
+.legal-hero {
+  position: relative;
+  overflow: hidden;
+  text-align: center;
+  padding: 80px 20px;
+  background: #eef2f8;
+}
+
+.legal-hero::before,
+.legal-hero::after {
+  content: "";
+  position: absolute;
+  border-radius: 50%;
+  background: rgba(26, 39, 68, 0.06);
+  z-index: 0;
+}
+
+.legal-hero::before {
+  width: 400px;
+  height: 400px;
+  top: -150px;
+  left: -150px;
+}
+
+.legal-hero::after {
+  width: 400px;
+  height: 400px;
+  bottom: -180px;
+  right: -150px;
+}
+
+.legal-eyebrow {
+  position: relative;
+  z-index: 1;
+  color: #7c8db0;
+  letter-spacing: 3px;
+  font-size: 0.85rem;
+  font-weight: 700;
+  font-family: sans-serif;
+  margin-bottom: 10px;
+}
+
+.legal-title {
+  position: relative;
+  z-index: 1;
+  font-size: 3.2rem;
+  color: #1a2744;
+  font-family: sans-serif;
+  font-weight: 800;
+  margin: 0 0 20px 0;
+}
+
+.legal-subtitle {
+  position: relative;
+  z-index: 1;
+  max-width: 750px;
+  margin: 0 auto;
+  color: #5a6a89;
+  font-family: sans-serif;
+  font-size: 1.1rem;
+  line-height: 1.6;
+}
+
+.legal-content {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 60px 20px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0 60px;
+}
+
+.legal-block {
+  margin-bottom: 40px;
+}
+
+.legal-block h2 {
+  font-family: sans-serif;
+  color: #1a2744;
+  font-size: 1.15rem;
+  margin-bottom: 12px;
+}
+
+.legal-block p {
+  font-family: sans-serif;
+  color: #4a5872;
+  line-height: 1.7;
+  margin: 0;
+}
+
+.legal-block ul {
+  margin: 10px 0 0 0;
+  padding-left: 20px;
+}
+
+.legal-block li {
+  color: #4a5872;
+  font-family: sans-serif;
+  line-height: 1.6;
+  margin-bottom: 6px;
+}
+
 .site-footer {
   position: relative;
   overflow: hidden;
@@ -493,6 +595,11 @@
   margin-top: 15px;
   font-size: 0.85rem;
   color: #7c8db0;
+}
+@media (max-width: 768px) {
+  .legal-content {
+    grid-template-columns: 1fr;
+  }
 }
 
      @media (max-width: 768px) {
@@ -644,144 +751,135 @@
 </div>
   </div>
 </header>
-<section class="hero-fullbleed">
- <img src="img/background1.jpg" class="hero-bg-image" alt="Tablet auf Schreibtisch" />
-  <div class="hero-overlay"></div>
+<section class="legal-hero">
+  <p class="legal-eyebrow">RECHTLICHES</p>
+  <h1 class="legal-title">Datenschutzerklärung</h1>
+  <p class="legal-subtitle">
+    Der Schutz deiner persönlichen Daten ist mir wichtig. Hier informiere
+    ich dich darüber, welche Daten ich auf dieser Website erhebe, wie ich
+    sie verwende und welche Rechte du hast.
+  </p>
+</section>
 
-  <div class="hero-content-overlay">
-    <h1 class="hero-text">
-      <span class="line-dark">Deine Prüfung.</span>
-      <span class="line-gold">Dein Plan.</span>
-      <span class="line-dark">Dein Erfolg.</span>
-    </h1>
-    <p class="hero-subtext">
-      "Mit Links Lernen" begleitet dich Schritt für Schritt auf dem Weg zur
-      Realschulabschlussprüfung in Baden-Württemberg.
-    </p>
-    <div class="hero-buttons">
-      <a href="kurse.html" class="btn-primary">Prüfungskurs entdecken →</a>
-      <a href="so-funktionierts.html" class="btn-secondary">So funktioniert's</a>
+<main class="legal-content">
+  <div class="legal-column">
+    <div class="legal-block">
+      <h2>1. Verantwortlicher</h2>
+      <p>
+        Verantwortlicher für die Datenverarbeitung auf dieser Website ist:<br>
+        <br>
+        Samuel Link<br>
+        Lernen mit Links<br>
+        Pforzheimer Straße 33<br>
+        76327 Pfinztal<br>
+        Deutschland
+      </p>
+      <p style="margin-top: 10px;">
+        E-Mail: info@mit-links.de
+      </p>
+    </div>
+
+    <div class="legal-block">
+      <h2>2. Erhebung und Verarbeitung von Daten</h2>
+      <p>
+        Ich erhebe und verarbeite personenbezogene Daten nur, soweit dies
+        für den Betrieb der Website, die Bereitstellung meiner Angebote
+        oder zur Kommunikation mit dir erforderlich ist. Die Daten werden
+        ausschließlich zu den hier genannten Zwecken verwendet und nicht
+        an Dritte weitergegeben, es sei denn, dies ist gesetzlich erlaubt
+        oder für die Erfüllung meiner Leistungen erforderlich.
+      </p>
+    </div>
+
+    <div class="legal-block">
+      <h2>3. Welche Daten werden erhoben?</h2>
+      <p>Je nach Nutzung der Website können folgende Daten erhoben werden:</p>
+      <ul>
+        <li>Technische Daten (z. B. IP-Adresse, Browser, Gerätetyp)</li>
+        <li>Angaben aus Kontaktformularen</li>
+        <li>Daten bei der Registrierung für ein Nutzerkonto</li>
+        <li>Zahlungsdaten bei Kursbuchungen (über sichere Zahlungsanbieter)</li>
+      </ul>
+    </div>
+
+    <div class="legal-block">
+      <h2>4. Zweck der Datenverarbeitung</h2>
+      <p>Die Daten werden zu folgenden Zwecken verarbeitet:</p>
+      <ul>
+        <li>Bereitstellung und Verbesserung der Website</li>
+        <li>Abwicklung von Kursbuchungen und Nutzerkonten</li>
+        <li>Beantwortung von Anfragen</li>
+        <li>Analyse der Website-Nutzung (zur Optimierung des Angebots)</li>
+        <li>Erfüllung gesetzlicher Verpflichtungen</li>
+      </ul>
     </div>
   </div>
-</section>
-<section class="why-section">
-  <div class="why-inner">
-    <h2 class="why-heading">Warum Mit Links Lernen?</h2>
 
-    <div class="why-grid">
-      <div class="why-item">
-        <div class="why-icon">
-          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#1a2744" stroke-width="2">
-            <circle cx="12" cy="12" r="9" />
-            <circle cx="12" cy="12" r="5" />
-            <circle cx="12" cy="12" r="1" />
-          </svg>
-        </div>
-        <h3 class="why-title">Prüfung im Blick</h3>
-        <p class="why-text">Lerne genau das, was du für deine Abschlussprüfung brauchst.</p>
-      </div>
+  <div class="legal-column">
+    <div class="legal-block">
+      <h2>5. Rechtsgrundlagen</h2>
+      <p>
+        Die Verarbeitung personenbezogener Daten erfolgt auf Grundlage von
+        Art. 6 Abs. 1 DSGVO, insbesondere:
+      </p>
+      <ul>
+        <li>lit. b) zur Erfüllung eines Vertrags oder vorvertraglicher Maßnahmen (z. B. bei Kursbuchungen)</li>
+        <li>lit. f) zur Wahrung berechtigter Interessen (z. B. Website-Analyse, Sicherheit)</li>
+        <li>lit. a) bei Einwilligung (z. B. Newsletter)</li>
+        <li>lit. c) zur Erfüllung gesetzlicher Verpflichtungen</li>
+      </ul>
+    </div>
 
-      <div class="why-item">
-        <div class="why-icon">
-  <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#1a2744" stroke-width="1.8">
-    <path d="M9 3a3 3 0 0 0-3 3v.2A3 3 0 0 0 4 9v1a3 3 0 0 0 1 2.2V13a3 3 0 0 0 2 2.8V17a3 3 0 0 0 3 3" />
-    <path d="M9 3a2.5 2.5 0 0 1 3 2.5v11A2.5 2.5 0 0 1 9 19" />
-    <path d="M15 3a3 3 0 0 1 3 3v.2a3 3 0 0 1 2 2.8v1a3 3 0 0 1-1 2.2V13a3 3 0 0 1-2 2.8V17a3 3 0 0 1-3 3" />
-    <path d="M15 3a2.5 2.5 0 0 0-3 2.5v11a2.5 2.5 0 0 0 3 2.5" />
-  </svg>
-</div>
-        <h3 class="why-title">Einfach erklärt</h3>
-        <p class="why-text">Verständliche Erklärungen, statt unnötig komplizierter Theorie.</p>
-      </div>
+    <div class="legal-block">
+      <h2>6. Cookies und Analyse-Tools</h2>
+      <p>
+        Diese Website verwendet Cookies, um die Nutzung der Website zu
+        analysieren und mein Angebot zu verbessern. Dabei kommen nur
+        technisch notwendige Cookies sowie – mit deiner Einwilligung –
+        Analyse-Tools zum Einsatz. Weitere Informationen findest du in den
+        Cookie-Einstellungen, die du jederzeit anpassen kannst.
+      </p>
+    </div>
 
-      <div class="why-item">
-        <div class="why-icon">
-          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#1a2744" stroke-width="2">
-            <rect x="6" y="2" width="12" height="20" rx="2" />
-            <line x1="10" y1="19" x2="14" y2="19" />
-          </svg>
-        </div>
-        <h3 class="why-title">Lernen, wann du willst</h3>
-        <p class="why-text">Videos, Aufgaben und Materialien – auf deinem Handy, Tablet oder PC.</p>
-      </div>
+    <div class="legal-block">
+      <h2>7. Externe Dienste</h2>
+      <p>
+        Zur Bereitstellung bestimmter Funktionen (z. B. Zahlungsabwicklung,
+        Video-Inhalte, Schriftarten) nutze ich vertrauenswürdige Anbieter
+        (z. B. Stripe, YouTube, Google Fonts). Dabei können personenbezogene
+        Daten an diese Anbieter übermittelt werden. Die Verarbeitung
+        erfolgt auf Grundlage von Art. 6 Abs. 1 lit. f) DSGVO. Eine
+        Übersicht der eingesetzten Dienste findest du in dieser
+        Datenschutzerklärung.
+      </p>
+    </div>
 
-      <div class="why-item">
-        <div class="why-icon">
-          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#1a2744" stroke-width="2">
-            <polyline points="3 17 9 11 13 15 21 6" />
-            <polyline points="15 6 21 6 21 12" />
-          </svg>
-        </div>
-        <h3 class="why-title">Schritt für Schritt</h3>
-        <p class="why-text">Von den Grundlagen bis zur Prüfungsaufgabe verständlich aufgebaut.</p>
-      </div>
+    <div class="legal-block">
+      <h2>8. Deine Rechte</h2>
+      <p>
+        Du hast das Recht auf Auskunft, Berichtigung, Löschung,
+        Einschränkung der Verarbeitung, Datenübertragbarkeit sowie
+        Widerspruch gegen die Verarbeitung deiner personenbezogenen Daten.
+        Zudem hast du das Recht, dich bei einer Datenschutzaufsichtsbehörde
+        zu beschweren.
+      </p>
+    </div>
+
+    <div class="legal-block">
+      <h2>9. Änderungen dieser Datenschutzerklärung</h2>
+      <p>
+        Ich behalte mir vor, diese Datenschutzerklärung bei Bedarf
+        anzupassen, z. B. bei Änderungen der rechtlichen
+        Rahmenbedingungen oder meiner Angebote. Die jeweils aktuelle
+        Version findest du jederzeit auf dieser Seite.
+      </p>
+      <p style="margin-top: 10px;">Stand: September 2026</p>
     </div>
   </div>
-</section>
-<section class="course-section">
-  <div class="handwritten-wrapper">
-  <p class="handwritten-note">Deine Prüfung?<br>Schaffst du mit links.</p>
-  <svg class="handwritten-underline" width="220" height="20" viewBox="0 0 220 20">
-    <path d="M5 12 Q 60 2, 110 10 T 215 8" stroke="#1a2744" stroke-width="2" fill="none" stroke-linecap="round" />
-  </svg>
-</div>
-  <div class="course-inner">
-    <div class="course-image-wrapper">
-      <div class="course-blob"></div>
-      <img src="img/background3.png" class="course-image" alt="Mit Links Lernen Dashboard" />
-    </div>
-
-    <div class="course-content">
-      <p class="course-label">So sieht Lernen bei dir aus</p>
-      <h2 class="course-heading">
-        Alles, was du für die Prüfung brauchst –
-        <span class="course-heading-accent">übersichtlich an einem Ort.</span>
-      </h2>
-
-      <div class="course-features">
-        <div class="course-feature">
-          <div class="course-feature-icon icon-green">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#2e7d4f" stroke-width="2">
-              <path d="M4 4v16a2 2 0 0 0 2 2h14" />
-              <path d="M4 4h12a4 4 0 0 1 4 4v14" />
-            </svg>
-          </div>
-          <div>
-            <h3 class="course-feature-title">Erklärungen</h3>
-            <p class="course-feature-text">Verständlich, strukturiert und auf den Punkt.</p>
-          </div>
-        </div>
-
-        <div class="course-feature">
-          <div class="course-feature-icon icon-blue">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#2b6cb0" stroke-width="2">
-              <path d="M12 20h9" />
-              <path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4Z" />
-            </svg>
-          </div>
-          <div>
-            <h3 class="course-feature-title">Aufgaben</h3>
-            <p class="course-feature-text">Direkt selbst ausprobieren und sicher werden.</p>
-          </div>
-        </div>
-
-        <div class="course-feature">
-          <div class="course-feature-icon icon-gold">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#d97706" stroke-width="2">
-              <path d="M9 18h6" />
-              <path d="M10 22h4" />
-              <path d="M12 2a7 7 0 0 0-4 12.7c.5.4.8 1 .8 1.8v.5h6.4v-.5c0-.7.3-1.4.8-1.8A7 7 0 0 0 12 2Z" />
-            </svg>
-          </div>
-          <div>
-            <h3 class="course-feature-title">Lösungen &amp; Tipps</h3>
-            <p class="course-feature-text">Schritt für Schritt nachvollziehen und dazulernen.</p>
-          </div>
-        </div>
-      </div>
+</main>
     </div>
   </div>
-</section>
+</main>
 <script>
   const menuToggle = document.getElementById('menuToggle');
   const mainNav = document.getElementById('mainNav');

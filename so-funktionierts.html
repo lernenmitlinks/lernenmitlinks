@@ -1,0 +1,1222 @@
+<!doctype html>
+<html lang="de">
+  <head>
+<link
+  href="https://fonts.googleapis.com/css2?family=Henny+Penny&family=Reenie+Beanie&display=swap"
+  rel="stylesheet"
+/>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>So funktioniert's</title>
+    <style>
+      * {
+  box-sizing: border-box;
+}
+      body {
+        margin: 0;
+      }
+
+  .site-header {
+  background-color: white;
+  position: sticky;
+  top: 0;
+  z-index: 30;
+}
+
+.header-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 20px;
+}
+
+.logo {
+  font-size: 24px;
+  font-weight: bold;
+  font-family: sans-serif;
+}
+
+.logo-mit,
+.logo-lernen {
+  color: #1a2744;
+}
+
+.logo-links {
+  color: #c9a04c;
+}
+
+.main-nav ul {
+  list-style: none;
+  display: flex;
+  gap: 30px;
+  margin: 0;
+  padding: 0;
+}
+
+.main-nav a {
+  color: #1a2744;
+  text-decoration: none;
+  font-family: sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.main-nav a.active {
+  border-bottom: 2px solid #c9a04c;
+  padding-bottom: 4px;
+}
+
+.main-nav a:hover {
+  color: #c9a04c;
+  
+}
+
+.login-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  background-color: #1a2744;
+  border-radius: 50%;
+}
+
+.hero-fullbleed {
+  position: relative;
+  width: 100%;
+  height: 550px;
+  overflow: hidden;
+}
+
+.hero-bg-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.hero-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to right, white 0%, white 15%, transparent 65%);
+}
+
+.hero-content-overlay {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  max-width: 1800px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 0 20px 0 100px;
+}
+
+.hero-text {
+  font-family: sans-serif;
+  font-size: 42px;
+  font-weight: 800;
+  margin: 0 0 20px 0;
+  line-height: 1.2;
+  max-width: 500px;
+}
+
+.hero-text .line-dark {
+  display: block;
+  color: #1a2744;
+}
+
+.hero-text .line-gold {
+  display: block;
+  color: #c9a04c;
+}
+
+.accent-green {
+  color: #2e7d4f;
+}
+
+.hero-subtext {
+  font-size: 18px;
+  color: #555;
+  font-family: sans-serif;
+  max-width: 420px;
+  margin: 0 0 30px 0;
+}
+
+.hero-buttons {
+  display: flex;
+  gap: 16px;
+}
+
+.btn-primary {
+  background-color: #1a2744;
+  color: white;
+  text-decoration: none;
+  padding: 14px 24px;
+  border-radius: 8px;
+  font-family: sans-serif;
+  font-weight: 500;
+}
+
+.btn-secondary {
+  background-color: white;
+  color: #1a2744;
+  text-decoration: none;
+  padding: 14px 24px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  font-family: sans-serif;
+  font-weight: 500;
+}
+.why-section {
+  background-color: #f7f4f0;
+  padding: 70px 0;
+}
+
+.why-inner {
+  max-width: 1800px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.why-heading {
+  text-align: center;
+  font-family: sans-serif;
+  font-size: 26px;
+  font-weight: 800;
+  color: #1a2744;
+  letter-spacing: 1px;
+  margin: 0 0 50px 0;
+}
+
+.why-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 40px;
+}
+
+.why-item {
+  text-align: center;
+}
+
+.why-icon {
+  width: 56px;
+  height: 56px;
+  background-color: #eae6e0;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 20px auto;
+}
+
+.why-title {
+  font-family: sans-serif;
+  font-size: 17px;
+  font-weight: 700;
+  color: #1a2744;
+  margin: 0 0 10px 0;
+}
+
+.why-text {
+  font-family: sans-serif;
+  font-size: 14px;
+  color: #666;
+  line-height: 1.5;
+  margin: 0;
+}
+
+.menu-toggle {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  width: 32px;
+  height: 32px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+}
+
+.menu-toggle span {
+  display: block;
+  width: 100%;
+  height: 2px;
+  background-color: #1a2744;
+}
+.course-section {
+  background-color: #fafbfc;
+  padding: 90px 0;
+  position: relative;
+}
+
+.course-inner {
+  max-width: 1800px;
+  margin: 0 auto;
+  padding: 0 20px;
+  display: flex;
+  align-items: center;
+  gap: 80px;
+}
+
+.course-image-wrapper {
+  flex: 0 0 1000px;
+  position: relative;
+}
+.course-blob {
+  position: absolute;
+  top: -40px;
+  left: -60px;
+  width: 320px;
+  height: 320px;
+  background-color: #d4e8d8;
+  border-radius: 62% 38% 55% 45% / 45% 55% 45% 55%;
+  z-index: 0;
+  opacity: 0.7;
+}
+.course-image {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 12px;
+  position: relative;
+  z-index: 1;
+}
+
+.course-content {
+  flex: 1;
+  margin-top: -100px;
+}
+
+.course-label {
+  font-family: sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: #6b7280;
+  margin: 0 0 12px 0;
+  padding-bottom: 12px;
+  border-bottom: 3px solid #c9a04c;
+  display: inline-block;
+  max-width: fit-content;
+}
+
+.course-heading {
+  font-family: sans-serif;
+  font-size: 30px;
+  font-weight: 800;
+  line-height: 1.3;
+  color: #1a2744;
+  margin: 20px 0 40px 0;
+}
+
+.course-heading-accent {
+  color: #2e7d4f;
+}
+
+.course-features {
+  display: flex;
+  flex-direction: column;
+ gap: 25px 
+}
+
+.course-feature {
+  display: flex;
+  align-items: flex-start;
+  gap: 18px;
+}
+
+.course-feature-icon {
+  width: 46px;
+  height: 46px;
+  min-width: 46px;
+  background-color: #eae6e0;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.icon-green {
+  background-color: #dcf2e3;
+}
+
+.icon-blue {
+  background-color: #dce9f7;
+}
+
+.icon-gold {
+  background-color: #fdecc8;
+}
+
+.course-feature-title {
+  font-family: sans-serif;
+  font-size: 18px;
+  font-weight: 700;
+  color: #1a2744;
+  margin: 0 0 4px 0;
+}
+
+.course-feature-text {
+  font-family: sans-serif;
+  font-size: 15px;
+  color: #666;
+  margin: 0;
+}
+
+.handwritten-wrapper {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  transform: rotate(-15deg);
+  text-align: center;
+}
+
+.handwritten-note {
+  font-family: 'Reenie Beanie', cursive;
+  font-size: 40px;
+  color: #1a2744;
+  margin: 0;
+}
+
+.handwritten-underline {
+  margin-top: -8px;
+}
+.steps-section {
+  padding: 90px 0;
+  background-color: white;
+}
+
+.steps-inner {
+  max-width: 1800px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.steps-heading {
+  text-align: center;
+  font-family: sans-serif;
+  font-size: 32px;
+  font-weight: 800;
+  color: #1a2744;
+  margin: 0 0 60px 0;
+}
+
+.steps-grid {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 30px;
+}
+
+.step-item {
+  text-align: center;
+  max-width: 260px;
+}
+
+.step-number {
+  font-family: sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  color: #c9a04c;
+  margin-bottom: 12px;
+}
+
+.step-icon {
+  width: 60px;
+  height: 60px;
+  background-color: #1a2744;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 20px auto;
+}
+
+.step-title {
+  font-family: sans-serif;
+  font-size: 18px;
+  font-weight: 700;
+  color: #1a2744;
+  margin: 0 0 8px 0;
+}
+
+.step-text {
+  font-family: sans-serif;
+  font-size: 14px;
+  color: #666;
+  margin: 0;
+}
+
+.step-arrow {
+  font-size: 24px;
+  color: #c9a04c;
+  margin-top: -60px;
+}
+.steps-hero-section {
+  padding: 80px 0;
+  background-color: white;
+}
+
+.steps-hero-inner {
+  max-width: 1800px;
+  margin: 0 auto;
+  padding: 0 20px;
+  display: flex;
+  align-items: center;
+  gap: 60px;
+}
+
+.steps-hero-content {
+  flex: 1;
+}
+
+.steps-hero-label {
+  font-family: sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: #c9a04c;
+  margin: 0 0 16px 0;
+}
+
+.steps-hero-heading {
+  font-family: sans-serif;
+  font-size: 40px;
+  font-weight: 800;
+  line-height: 1.25;
+  color: #1a2744;
+  margin: 0 0 24px 0;
+}
+
+.steps-hero-accent {
+  color: #2e7d4f;
+}
+
+.steps-hero-text {
+  font-family: sans-serif;
+  font-size: 16px;
+  color: #555;
+  max-width: 420px;
+  margin: 0;
+}
+
+.steps-hero-image-wrapper {
+  flex: 1;
+  position: relative;
+  min-width: 0;
+}
+
+.steps-hero-image {
+  display: block;
+  width: 100%;
+  height: 650px;
+  object-fit: cover;
+  border-radius: 16px;
+}
+.brand-inline {
+  font-weight: 700;
+}
+
+.brand-links {
+  color: #c9a04c;
+  font-weight: 900;
+}
+.tiles-section {
+  padding: 60px 0;
+  background-color: white;
+}
+
+.tiles-inner {
+  max-width: 1800px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.tiles-grid {
+  display: flex;
+  align-items: stretch;
+  gap: 8px;
+}
+
+.tile {
+  flex: 1;
+  padding: 24px 30px 24px 40px;
+  clip-path: polygon(0% 0%, 85% 0%, 100% 50%, 85% 100%, 0% 100%, 12% 50%);
+  margin-left: -20px;
+  text-align: center;
+}
+
+.tile:first-child {
+  margin-left: 0;
+  clip-path: polygon(0% 0%, 85% 0%, 100% 50%, 85% 100%, 0% 100%);
+}
+
+.tile-green {
+  background-color: #dcf2e3;
+}
+
+.tile-blue {
+  background-color: #dce9f7;
+}
+
+.tile-gold {
+  background-color: #fdecc8;
+}
+
+.tile-purple {
+  background-color: #e6e1f7;
+}
+
+.tile-mint {
+  background-color: #dcf2e3;
+}
+
+..tile-number {
+  font-family: sans-serif;
+  font-size: 14px;
+  font-weight: 800;
+  margin-bottom: 16px;
+}
+
+.tile-green .tile-number {
+  color: #2e7d4f;
+}
+
+.tile-blue .tile-number {
+  color: #2b6cb0;
+}
+
+.tile-gold .tile-number {
+  color: #d97706;
+}
+
+.tile-purple .tile-number {
+  color: #6b46c1;
+}
+
+.tile-mint .tile-number {
+  color: #2e7d4f;
+}
+
+.tile-icon {
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 16px auto;
+}.tile-number {
+  font-family: sans-serif;
+  font-size: 14px;
+  font-weight: 800;
+  margin-bottom: 16px;
+}
+
+.tile-green .tile-number {
+  color: #2e7d4f;
+}
+
+.tile-blue .tile-number {
+  color: #2b6cb0;
+}
+
+.tile-gold .tile-number {
+  color: #d97706;
+}
+
+.tile-purple .tile-number {
+  color: #6b46c1;
+}
+
+.tile-mint .tile-number {
+  color: #2e7d4f;
+}
+
+.tile-icon {
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 16px auto;
+}
+
+.tile-icon {
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 16px auto;
+}
+
+.tile-green .tile-icon {
+  background-color: #dcf2e3;
+}
+
+.tile-blue .tile-icon {
+  background-color: #dce9f7;
+}
+
+.tile-gold .tile-icon {
+  background-color: #fdecc8;
+}
+
+.tile-purple .tile-icon {
+  background-color: #e6e1f7;
+}
+
+.tile-mint .tile-icon {
+  background-color: #dcf2e3;
+}
+
+.tile-title {
+  font-family: sans-serif;
+  font-size: 17px;
+  font-weight: 700;
+  color: #1a2744;
+  margin: 0 0 8px 0;
+}
+
+.tile-text {
+  font-family: sans-serif;
+  font-size: 14px;
+  color: #555;
+  line-height: 1.5;
+  margin: 0;
+}
+
+.tile-connector {
+  font-size: 26px;
+  color: #ccc;
+  flex-shrink: 0;
+}
+.expect-section {
+  padding: 60px 0 20px 0;
+  background-color: white;
+}
+
+.expect-inner {
+  max-width: 1800px;
+  margin: 0 auto;
+  padding: 0 20px;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 40px;
+}
+
+.expect-heading {
+  font-family: sans-serif;
+  font-size: 32px;
+  font-weight: 800;
+  line-height: 1.3;
+  color: #1a2744;
+  margin: 16px 0 0 0;
+  max-width: 700px;
+}
+
+.handwritten-wrapper-static {
+  transform: rotate(-4deg);
+  flex-shrink: 0;
+}
+
+.handwritten-note-dark {
+  font-family: 'Reenie Beanie', cursive;
+  font-size: 32px;
+  color: #2e7d4f;
+  line-height: 1.2;
+  margin: 0;
+  text-align: right;
+}
+
+.expect-text {
+  padding-left: 80px;
+}
+.cta-section {
+  background-color: white;          
+  padding: 60px 0;
+}
+
+.cta-box {
+  max-width: 1800px;
+  margin: 0 auto;
+  background-color: #1a2744;
+  border-radius: 20px;
+  clip-path: polygon(
+    3% 0%, 100% 0%, 100% 70%, 98% 100%, 0% 100%, 0% 30%
+  );
+}
+
+.cta-inner {
+  max-width: none;
+  margin: 0;
+  padding: 40px 60px;
+}
+
+.cta-top {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
+.cta-icon {
+  width: 56px;
+  height: 56px;
+  min-width: 56px;
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.cta-text {
+  flex: 1;
+}
+
+.cta-heading {
+  font-family: sans-serif;
+  font-size: 24px;
+  font-weight: 800;
+  color: white;
+  margin: 0 0 6px 0;
+}
+
+.cta-accent {
+  color: #c9a04c;
+}
+
+.cta-subtext {
+  font-family: sans-serif;
+  font-size: 15px;
+  color: #cfd6e4;
+  margin: 0;
+}
+
+.btn-cta {
+  background-color: #2e7d4f;
+  color: white;
+  text-decoration: none;
+  padding: 14px 28px;
+  border-radius: 30px;
+  font-family: sans-serif;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.cta-checks {
+  display: flex;
+  justify-content: flex-end;
+  gap: 32px;
+  margin-top: 24px;
+}
+
+.cta-check {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: sans-serif;
+  font-size: 14px;
+  color: #cfd6e4;
+}
+.trust-section {
+  padding: 40px 0;
+  background-color: white;
+}
+
+.trust-inner {
+  max-width: 1800px;
+  margin: 0 auto;
+  padding: 0 20px;
+  display: flex;
+  justify-content: center;
+  gap: 60px;
+}
+
+.trust-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: sans-serif;
+  font-size: 15px;
+  color: #1a2744;
+  font-weight: 500;
+}
+
+     @media (max-width: 768px) {
+    .hero {
+    flex-direction: column;
+    padding: 30px 20px;
+  }
+.steps-grid {
+  flex-direction: column;
+  gap: 50px;
+}
+
+.step-arrow {
+  transform: rotate(90deg);
+  margin-top: 0;
+}
+  .hero-text {
+    font-size: 26px;
+  }
+
+  .site-header {
+    flex-wrap: wrap;
+    padding: 15px 20px;
+    gap: 12px;
+  }
+
+  .logo {
+    font-size: 18px;
+  }
+
+  .menu-toggle {
+  display: flex;
+  order: 3;
+}
+
+.login-icon {
+  order: 2;
+}
+
+.main-nav {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  width: 100%;
+  order: 4;
+  background-color: white;
+  padding: 20px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+  z-index: 20;
+}
+
+.main-nav.open {
+  display: block;
+}
+
+.main-nav ul {
+  flex-direction: column;
+  gap: 12px;
+}
+
+  .main-nav ul {
+    flex-wrap: wrap;
+    gap: 12px 16px;
+  }
+
+  .main-nav a {
+    font-size: 13px;
+  }
+
+  .login-icon {
+    width: 34px;
+    height: 34px;
+  }
+  
+  .why-grid {
+  grid-template-columns: 1fr;
+  gap: 30px;
+}
+.hero-fullbleed {
+  height: auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.hero-bg-image {
+  position: relative;
+  height: 250px;
+  order: 2;
+}
+
+.hero-overlay {
+  display: none;
+}
+
+.hero-content-overlay {
+  position: relative;
+  transform: none;
+  left: 0;
+  order: 1;
+  background-color: white;
+  padding: 30px 20px;
+  justify-content: flex-start;
+}
+
+.hero-text {
+  max-width: 100%;
+  font-size: 26px;
+}
+
+.hero-subtext {
+  max-width: 100%;
+}
+
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.cta-top {
+  flex-direction: column;
+  text-align: center;
+  gap: 16px;
+}
+
+.cta-checks {
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+.trust-inner {
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+}
+    </style>
+  </head>
+  <body>
+  <header class="site-header">
+  <div class="header-inner">
+     <div class="logo">
+      <span class="logo-lernen">Lernen</span>
+      <span class="logo-mit">mit</span>
+      <span class="logo-links">Links</span>
+    </div>
+
+
+    <nav class="main-nav" id="mainNav">
+  <ul>
+    <li><a href="index.html">Startseite</a></li>
+    <li><a href="kurse.html">Kurse</a></li>
+    <li><a href="so-funktionierts.html">So funktioniert's</a></li>
+    <li><a href="ueber-mich.html">Über mich</a></li>
+    <li><a href="faq.html">FAQ</a></li>
+  </ul>
+</nav>
+
+<div class="header-right">
+  <a href="login.html" class="login-icon" aria-label="Zur Anmeldung">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+      <circle cx="12" cy="8" r="4" stroke="white" stroke-width="2"/>
+      <path d="M4 20c0-4 4-6 8-6s8 2 8 6" stroke="white" stroke-width="2" stroke-linecap="round"/>
+    </svg>
+  </a>
+
+  <button class="menu-toggle" id="menuToggle" aria-label="Menü öffnen">
+    <span></span>
+    <span></span>
+    <span></span>
+  </button>
+</div>
+  </div>
+</header>
+<section class="hero-fullbleed">
+  <img src="img/steps-hero.png" class="hero-bg-image" alt="Notizbuch mit Plan Lernen Bestehen" />
+  <div class="hero-overlay"></div>
+
+  <div class="hero-content-overlay">
+    <p class="course-label">So funktioniert's</p>
+    <h1 class="hero-text">
+      <span class="line-dark">In 5 Schritten zur erfolgreichen</span>
+      <span class="accent-green">Matheprüfung.</span>
+    </h1>
+    <p class="hero-subtext">
+        Einfach, transparent und ohne Stress – 
+    <span class="brand-inline">mit<span class="brand-links">links</span>lernen</span>
+        begleitet dich schnell und unkompliziert zu deinem Ziel.
+    </p>
+  </div>
+</section>
+<section class="tiles-section">
+  <div class="tiles-inner">
+    <div class="tiles-grid">
+      <div class="tile tile-green">
+        <div class="tile-number">01</div>
+        <div class="tile-icon">
+          <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#2e7d4f" stroke-width="2">
+            <circle cx="11" cy="11" r="7" />
+            <path d="M21 21l-4.3-4.3" />
+          </svg>
+        </div>
+        <h3 class="tile-title">Kurs auswählen</h3>
+        <p class="tile-text">Wähle den passenden Kurs für deine Prüfung.</p>
+      </div>
+
+      <div class="tile-connector">›</div>
+
+      <div class="tile tile-blue">
+        <div class="tile-number">02</div>
+        <div class="tile-icon">
+          <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#2b6cb0" stroke-width="2">
+            <circle cx="9" cy="21" r="1" />
+            <circle cx="20" cy="21" r="1" />
+            <path d="M1 1h4l2.7 13.4a2 2 0 0 0 2 1.6h9.7a2 2 0 0 0 2-1.6L23 6H6" />
+          </svg>
+        </div>
+        <h3 class="tile-title">Kurs kaufen</h3>
+        <p class="tile-text">Sichere dir deinen Zugang zum Kurs.</p>
+      </div>
+
+      <div class="tile-connector">›</div>
+
+      <div class="tile tile-gold">
+        <div class="tile-number">03</div>
+        <div class="tile-icon">
+          <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#d97706" stroke-width="2">
+            <rect x="2" y="4" width="20" height="16" rx="2" />
+            <path d="M2 6l10 7 10-7" />
+          </svg>
+        </div>
+        <h3 class="tile-title">Zugang erhalten</h3>
+        <p class="tile-text">Du erhältst deine persönlichen Zugangsdaten direkt nach dem Kauf.</p>
+      </div>
+
+      <div class="tile-connector">›</div>
+
+      <div class="tile tile-purple">
+        <div class="tile-number">04</div>
+        <div class="tile-icon">
+          <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#6b46c1" stroke-width="2">
+            <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20" />
+            <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2Z" />
+          </svg>
+        </div>
+        <h3 class="tile-title">Lernen &amp; Üben</h3>
+        <p class="tile-text">Erklärungen anschauen, Aufgaben lösen und dein Wissen testen.</p>
+      </div>
+
+      <div class="tile-connector">›</div>
+
+      <div class="tile tile-mint">
+        <div class="tile-number">05</div>
+        <div class="tile-icon">
+          <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#2e7d4f" stroke-width="2">
+            <circle cx="12" cy="12" r="9" />
+            <circle cx="12" cy="12" r="5" />
+            <circle cx="12" cy="12" r="1" />
+          </svg>
+        </div>
+        <h3 class="tile-title">Prüfung meistern</h3>
+        <p class="tile-text">Gut vorbereitet und mit mehr Sicherheit in die Prüfung.</p>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="expect-section">
+  <div class="expect-inner">
+    <div class="expect-text">
+      <p class="course-label">Was erwartet dich?</p>
+      <h2 class="expect-heading">
+        Alles, was du für deinen Erfolg brauchst –
+        <span class="accent-green">an einem Ort.</span>
+      </h2>
+    </div>
+
+    <div class="handwritten-wrapper-static">
+      <p class="handwritten-note-dark">Verständlich.<br>Praxisnah.<br>Mit Links.</p>
+    </div>
+  </div>
+</section>
+<section class="cta-section">
+  <div class="cta-box">
+    <div class="cta-inner">
+      <div class="cta-top">
+        <div class="cta-icon">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
+            <path d="M22 10L12 5 2 10l10 5 10-5Z" />
+            <path d="M6 12v5c0 1.5 3 3 6 3s6-1.5 6-3v-5" />
+          </svg>
+        </div>
+
+        <div class="cta-text">
+          <h2 class="cta-heading">
+            Bereit, deine <span class="cta-accent">Matheprüfung</span> zu packen?
+          </h2>
+          <p class="cta-subtext">Starte jetzt mit deiner Prüfungsvorbereitung.</p>
+        </div>
+
+        <a href="kurse.html" class="btn-cta">Kurs entdecken →</a>
+      </div>
+
+      <div class="cta-checks">
+        <div class="cta-check">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#2e7d4f" stroke-width="3">
+            <path d="M5 12l5 5L20 7" />
+          </svg>
+          Sicher bezahlen
+        </div>
+
+        <div class="cta-check">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#2e7d4f" stroke-width="3">
+            <path d="M5 12l5 5L20 7" />
+          </svg>
+          Sofortiger Zugang
+        </div>
+
+        <div class="cta-check">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#2e7d4f" stroke-width="3">
+            <path d="M5 12l5 5L20 7" />
+          </svg>
+          Flexibel lernen
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="trust-section">
+  <div class="trust-inner">
+    <div class="trust-item">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#1a2744" stroke-width="2">
+        <path d="M12 2 4 6v6c0 5 3.5 8.5 8 10 4.5-1.5 8-5 8-10V6l-8-4Z" />
+      </svg>
+      Sicher &amp; geprüft
+    </div>
+
+    <div class="trust-item">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#1a2744" stroke-width="2">
+        <circle cx="8" cy="12" r="5" />
+        <circle cx="16" cy="12" r="5" />
+      </svg>
+      Lernen in deinem Tempo
+    </div>
+
+    <div class="trust-item">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#1a2744" stroke-width="2">
+        <path d="M22 10L12 5 2 10l10 5 10-5Z" />
+        <path d="M6 12v5c0 1.5 3 3 6 3s6-1.5 6-3v-5" />
+      </svg>
+      Von einem Lehrer entwickelt
+    </div>
+  </div>
+</section>
+<script>
+  const menuToggle = document.getElementById('menuToggle');
+  const mainNav = document.getElementById('mainNav');
+
+  menuToggle.addEventListener('click', () => {
+    mainNav.classList.toggle('open');
+  });
+</script>
+  </body>
+</html>

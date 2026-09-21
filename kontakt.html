@@ -385,6 +385,225 @@
 .handwritten-underline {
   margin-top: -8px;
 }
+.legal-hero {
+  position: relative;
+  overflow: hidden;
+  text-align: center;
+  padding: 80px 20px;
+  background: #eef2f8;
+}
+
+.legal-hero::before,
+.legal-hero::after {
+  content: "";
+  position: absolute;
+  border-radius: 50%;
+  background: rgba(26, 39, 68, 0.06);
+  z-index: 0;
+}
+
+.legal-hero::before {
+  width: 400px;
+  height: 400px;
+  top: -150px;
+  left: -150px;
+}
+
+.legal-hero::after {
+  width: 400px;
+  height: 400px;
+  bottom: -180px;
+  right: -150px;
+}
+
+.legal-eyebrow {
+  position: relative;
+  z-index: 1;
+  color: #7c8db0;
+  letter-spacing: 3px;
+  font-size: 0.85rem;
+  font-weight: 700;
+  font-family: sans-serif;
+  margin-bottom: 10px;
+}
+
+.legal-title {
+  position: relative;
+  z-index: 1;
+  font-size: 3.2rem;
+  color: #1a2744;
+  font-family: sans-serif;
+  font-weight: 800;
+  margin: 0 0 20px 0;
+}
+
+.legal-subtitle {
+  position: relative;
+  z-index: 1;
+  max-width: 600px;
+  margin: 0 auto;
+  color: #5a6a89;
+  font-family: sans-serif;
+  font-size: 1.1rem;
+  line-height: 1.6;
+}
+
+.legal-content {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 60px 20px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0 60px;
+}
+
+.legal-block {
+  margin-bottom: 40px;
+}
+
+.legal-block h2 {
+  font-family: sans-serif;
+  color: #1a2744;
+  font-size: 1.15rem;
+  margin-bottom: 12px;
+}
+
+.legal-block p {
+  font-family: sans-serif;
+  color: #4a5872;
+  line-height: 1.7;
+  margin: 0;
+}
+
+.contact-content {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 60px 20px;
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: 60px;
+  align-items: start;
+}
+
+.contact-info-item {
+  display: flex;
+  gap: 20px;
+  margin-bottom: 45px;
+}
+
+.contact-info-icon {
+  flex: 0 0 56px;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background-color: #eaf1fb;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.contact-info-item h3 {
+  font-family: sans-serif;
+  color: #1a2744;
+  font-size: 1.15rem;
+  margin: 0 0 8px 0;
+}
+
+.contact-info-item p {
+  font-family: sans-serif;
+  color: #5a6a89;
+  line-height: 1.6;
+  margin: 0;
+}
+
+.contact-info-item a {
+  color: #2b6cb0;
+  text-decoration: none;
+}
+
+.contact-info-item a:hover {
+  text-decoration: underline;
+}
+
+.contact-form-card {
+  background-color: #f6f8fb;
+  border-radius: 16px;
+  padding: 40px;
+  border: 1px solid #e6ebf2;
+}
+
+.contact-form-card h2 {
+  font-family: sans-serif;
+  color: #1a2744;
+  font-size: 1.5rem;
+  margin: 0 0 25px 0;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-group label {
+  display: block;
+  font-family: sans-serif;
+  color: #1a2744;
+  font-size: 0.95rem;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+.form-group input,
+.form-group textarea {
+  width: 100%;
+  font-family: sans-serif;
+  font-size: 0.95rem;
+  padding: 12px 14px;
+  border: 1px solid #d7deea;
+  border-radius: 8px;
+  background-color: #ffffff;
+  color: #1a2744;
+}
+
+.form-group textarea {
+  resize: vertical;
+  min-height: 120px;
+}
+
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+  color: #a3adbf;
+}
+
+.form-submit {
+  width: 100%;
+  background-color: #1a2744;
+  color: #ffffff;
+  border: none;
+  padding: 15px;
+  border-radius: 8px;
+  font-family: sans-serif;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.form-submit:hover {
+  background-color: #26365c;
+}
+
+.form-note {
+  font-family: sans-serif;
+  color: #8a93a8;
+  font-size: 0.85rem;
+  margin-top: 12px;
+}
+
+@media (max-width: 768px) {
+  .contact-content {
+    grid-template-columns: 1fr;
+  }
+}
+
 .site-footer {
   position: relative;
   overflow: hidden;
@@ -493,6 +712,11 @@
   margin-top: 15px;
   font-size: 0.85rem;
   color: #7c8db0;
+}
+@media (max-width: 768px) {
+  .legal-content {
+    grid-template-columns: 1fr;
+  }
 }
 
      @media (max-width: 768px) {
@@ -644,144 +868,97 @@
 </div>
   </div>
 </header>
-<section class="hero-fullbleed">
- <img src="img/background1.jpg" class="hero-bg-image" alt="Tablet auf Schreibtisch" />
-  <div class="hero-overlay"></div>
-
-  <div class="hero-content-overlay">
-    <h1 class="hero-text">
-      <span class="line-dark">Deine Prüfung.</span>
-      <span class="line-gold">Dein Plan.</span>
-      <span class="line-dark">Dein Erfolg.</span>
-    </h1>
-    <p class="hero-subtext">
-      "Mit Links Lernen" begleitet dich Schritt für Schritt auf dem Weg zur
-      Realschulabschlussprüfung in Baden-Württemberg.
-    </p>
-    <div class="hero-buttons">
-      <a href="kurse.html" class="btn-primary">Prüfungskurs entdecken →</a>
-      <a href="so-funktionierts.html" class="btn-secondary">So funktioniert's</a>
-    </div>
-  </div>
+<section class="legal-hero">
+  <p class="legal-eyebrow">KONTAKT</p>
+  <h1 class="legal-title">Kontakt</h1>
+  <p class="legal-subtitle">
+    Du hast Fragen, Anregungen oder möchtest mehr über meine Kurse
+    erfahren? Ich freue mich auf deine Nachricht.
+  </p>
 </section>
-<section class="why-section">
-  <div class="why-inner">
-    <h2 class="why-heading">Warum Mit Links Lernen?</h2>
 
-    <div class="why-grid">
-      <div class="why-item">
-        <div class="why-icon">
-          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#1a2744" stroke-width="2">
-            <circle cx="12" cy="12" r="9" />
-            <circle cx="12" cy="12" r="5" />
-            <circle cx="12" cy="12" r="1" />
-          </svg>
-        </div>
-        <h3 class="why-title">Prüfung im Blick</h3>
-        <p class="why-text">Lerne genau das, was du für deine Abschlussprüfung brauchst.</p>
+<main class="contact-content">
+  <div class="contact-info-list">
+    <div class="contact-info-item">
+      <div class="contact-info-icon">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#1a2744" stroke-width="2">
+          <rect x="3" y="5" width="18" height="14" rx="2" />
+          <path d="M3 7l9 6 9-6" />
+        </svg>
       </div>
-
-      <div class="why-item">
-        <div class="why-icon">
-  <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#1a2744" stroke-width="1.8">
-    <path d="M9 3a3 3 0 0 0-3 3v.2A3 3 0 0 0 4 9v1a3 3 0 0 0 1 2.2V13a3 3 0 0 0 2 2.8V17a3 3 0 0 0 3 3" />
-    <path d="M9 3a2.5 2.5 0 0 1 3 2.5v11A2.5 2.5 0 0 1 9 19" />
-    <path d="M15 3a3 3 0 0 1 3 3v.2a3 3 0 0 1 2 2.8v1a3 3 0 0 1-1 2.2V13a3 3 0 0 1-2 2.8V17a3 3 0 0 1-3 3" />
-    <path d="M15 3a2.5 2.5 0 0 0-3 2.5v11a2.5 2.5 0 0 0 3 2.5" />
-  </svg>
-</div>
-        <h3 class="why-title">Einfach erklärt</h3>
-        <p class="why-text">Verständliche Erklärungen, statt unnötig komplizierter Theorie.</p>
+      <div>
+        <h3>E-Mail</h3>
+        <p>
+          Schreib mir jederzeit eine E-Mail. Ich melde mich
+          schnellstmöglich bei dir.<br>
+          <a href="mailto:info@lernenmitlinks.de">info@lernenmitlinks.de</a>
+        </p>
       </div>
+    </div>
 
-      <div class="why-item">
-        <div class="why-icon">
-          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#1a2744" stroke-width="2">
-            <rect x="6" y="2" width="12" height="20" rx="2" />
-            <line x1="10" y1="19" x2="14" y2="19" />
-          </svg>
-        </div>
-        <h3 class="why-title">Lernen, wann du willst</h3>
-        <p class="why-text">Videos, Aufgaben und Materialien – auf deinem Handy, Tablet oder PC.</p>
+    <div class="contact-info-item">
+      <div class="contact-info-icon">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#1a2744" stroke-width="2">
+          <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
+          <circle cx="12" cy="10" r="3" />
+        </svg>
       </div>
+      <div>
+        <h3>Adresse</h3>
+        <p>
+          Samuel Link<br>
+          Pforzheimer Straße 33<br>
+          76327 Pfinztal<br>
+          Deutschland
+        </p>
+      </div>
+    </div>
 
-      <div class="why-item">
-        <div class="why-icon">
-          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#1a2744" stroke-width="2">
-            <polyline points="3 17 9 11 13 15 21 6" />
-            <polyline points="15 6 21 6 21 12" />
-          </svg>
-        </div>
-        <h3 class="why-title">Schritt für Schritt</h3>
-        <p class="why-text">Von den Grundlagen bis zur Prüfungsaufgabe verständlich aufgebaut.</p>
+    <div class="contact-info-item">
+      <div class="contact-info-icon">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#1a2744" stroke-width="2">
+          <circle cx="12" cy="12" r="9" />
+          <path d="M12 7v5l3 3" />
+        </svg>
+      </div>
+      <div>
+        <h3>Antwortzeit</h3>
+        <p>
+          Ich bemühe mich, alle Anfragen innerhalb von 1–2 Werktagen zu
+          beantworten.
+        </p>
       </div>
     </div>
   </div>
-</section>
-<section class="course-section">
-  <div class="handwritten-wrapper">
-  <p class="handwritten-note">Deine Prüfung?<br>Schaffst du mit links.</p>
-  <svg class="handwritten-underline" width="220" height="20" viewBox="0 0 220 20">
-    <path d="M5 12 Q 60 2, 110 10 T 215 8" stroke="#1a2744" stroke-width="2" fill="none" stroke-linecap="round" />
-  </svg>
-</div>
-  <div class="course-inner">
-    <div class="course-image-wrapper">
-      <div class="course-blob"></div>
-      <img src="img/background3.png" class="course-image" alt="Mit Links Lernen Dashboard" />
-    </div>
 
-    <div class="course-content">
-      <p class="course-label">So sieht Lernen bei dir aus</p>
-      <h2 class="course-heading">
-        Alles, was du für die Prüfung brauchst –
-        <span class="course-heading-accent">übersichtlich an einem Ort.</span>
-      </h2>
-
-      <div class="course-features">
-        <div class="course-feature">
-          <div class="course-feature-icon icon-green">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#2e7d4f" stroke-width="2">
-              <path d="M4 4v16a2 2 0 0 0 2 2h14" />
-              <path d="M4 4h12a4 4 0 0 1 4 4v14" />
-            </svg>
-          </div>
-          <div>
-            <h3 class="course-feature-title">Erklärungen</h3>
-            <p class="course-feature-text">Verständlich, strukturiert und auf den Punkt.</p>
-          </div>
-        </div>
-
-        <div class="course-feature">
-          <div class="course-feature-icon icon-blue">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#2b6cb0" stroke-width="2">
-              <path d="M12 20h9" />
-              <path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4Z" />
-            </svg>
-          </div>
-          <div>
-            <h3 class="course-feature-title">Aufgaben</h3>
-            <p class="course-feature-text">Direkt selbst ausprobieren und sicher werden.</p>
-          </div>
-        </div>
-
-        <div class="course-feature">
-          <div class="course-feature-icon icon-gold">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#d97706" stroke-width="2">
-              <path d="M9 18h6" />
-              <path d="M10 22h4" />
-              <path d="M12 2a7 7 0 0 0-4 12.7c.5.4.8 1 .8 1.8v.5h6.4v-.5c0-.7.3-1.4.8-1.8A7 7 0 0 0 12 2Z" />
-            </svg>
-          </div>
-          <div>
-            <h3 class="course-feature-title">Lösungen &amp; Tipps</h3>
-            <p class="course-feature-text">Schritt für Schritt nachvollziehen und dazulernen.</p>
-          </div>
-        </div>
+  <div class="contact-form-card">
+    <h2>Nachricht senden</h2>
+    <form>
+      <div class="form-group">
+        <label for="name">Name *</label>
+        <input type="text" id="name" name="name" placeholder="Dein Name" required>
       </div>
-    </div>
+
+      <div class="form-group">
+        <label for="email">E-Mail *</label>
+        <input type="email" id="email" name="email" placeholder="deine@email.de" required>
+      </div>
+
+      <div class="form-group">
+        <label for="betreff">Betreff *</label>
+        <input type="text" id="betreff" name="betreff" placeholder="Worum geht es?" required>
+      </div>
+
+      <div class="form-group">
+        <label for="nachricht">Nachricht *</label>
+        <textarea id="nachricht" name="nachricht" placeholder="Deine Nachricht ..." required></textarea>
+      </div>
+
+      <button type="submit" class="form-submit">Nachricht senden</button>
+      <p class="form-note">* Pflichtfelder</p>
+    </form>
   </div>
-</section>
+</main>
 <script>
   const menuToggle = document.getElementById('menuToggle');
   const mainNav = document.getElementById('mainNav');
