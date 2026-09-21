@@ -1152,6 +1152,85 @@
   margin-top: 8px;
 }
 
+.footer-logo {
+  position: relative;
+  z-index: 1;
+  font-size: 1.8rem;
+  letter-spacing: 2px;
+  color: #ffffff;
+  font-weight: 300;
+  text-transform: uppercase;
+}
+
+.footer-logo .highlight {
+  color: #e0b97d;
+  font-weight: 700;
+  position: relative;
+}
+
+.footer-logo .highlight::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -5px;
+  height: 4px;
+  background: #e0b97d;
+  border-radius: 50%;
+}
+
+.footer-subtitle {
+  position: relative;
+  z-index: 1;
+  margin-top: 10px;
+  font-size: 0.95rem;
+  color: #9fb0cf;
+  font-weight: 300;
+}
+
+.footer-nav {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  justify-content: center;
+  gap: 0;
+  margin-top: 20px;
+}
+
+.footer-nav a {
+  color: #ffffff;
+  text-decoration: none;
+  font-size: 0.95rem;
+  padding: 0 18px;
+  border-right: 1px solid rgba(255, 255, 255, 0.3);
+  transition: color 0.2s ease;
+}
+
+.footer-nav a:last-child {
+  border-right: none;
+}
+
+.footer-nav a:hover {
+  color: #e0b97d;
+}
+
+.footer-divider {
+  position: relative;
+  z-index: 1;
+  max-width: 1200px;
+  margin: 20px auto 0;
+  border: none;
+  border-top: 1px solid rgba(255, 255, 255, 0.25);
+}
+
+.footer-copyright {
+  position: relative;
+  z-index: 1;
+  margin-top: 15px;
+  font-size: 0.85rem;
+  color: #7c8db0;
+}
+
      @media (max-width: 768px) {
     .hero {
     flex-direction: column;
@@ -1479,5 +1558,18 @@
     mainNav.classList.toggle('open');
   });
 </script>
+<footer class="site-footer">
+  <div class="footer-logo">Lernen mit <span class="highlight">Links</span></div>
+  <p class="footer-subtitle">Deine Vorbereitung auf die Matheprüfung in Baden-Württemberg.</p>
+
+  <nav class="footer-nav">
+    <a href="impressum.html">Impressum</a>
+    <a href="datenschutz.html">Datenschutz</a>
+    <a href="kontakt.html">Kontakt</a>
+  </nav>
+
+  <hr class="footer-divider">
+  <p class="footer-copyright">&copy; 2026 Lernen mit Links. Alle Rechte vorbehalten.</p>
+</footer>
   </body>
 </html>
