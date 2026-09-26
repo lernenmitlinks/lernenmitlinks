@@ -1,0 +1,1003 @@
+<!doctype html>
+<html lang="de">
+  <head>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Henny+Penny&family=Reenie+Beanie&display=swap"
+      rel="stylesheet"
+    />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Über mich</title>
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        margin: 0;
+      }
+
+      .site-header {
+        background-color: white;
+        position: sticky;
+        top: 0;
+        z-index: 30;
+      }
+
+      .header-inner {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 12px 20px;
+      }
+
+      .logo {
+        font-size: 24px;
+        font-weight: bold;
+        font-family: sans-serif;
+      }
+
+      .logo-mit {
+        color: #1a2744;
+      }
+
+      .logo-links,
+      .logo-lernen {
+        color: #c9a04c;
+      }
+
+      .main-nav ul {
+        list-style: none;
+        display: flex;
+        gap: 30px;
+        margin: 0;
+        padding: 0;
+      }
+
+      .main-nav a {
+        color: #1a2744;
+        text-decoration: none;
+        font-family: sans-serif;
+        font-size: 16px;
+        font-weight: 500;
+      }
+
+      .main-nav a.active {
+        border-bottom: 2px solid #c9a04c;
+        padding-bottom: 4px;
+      }
+
+      .main-nav a:hover {
+        color: #c9a04c;
+      }
+
+      .header-right {
+        display: flex;
+        align-items: center;
+        gap: 14px;
+      }
+
+      .login-icon {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 36px;
+        height: 36px;
+        background-color: #1a2744;
+        border-radius: 50%;
+      }
+
+      .menu-toggle {
+        display: none;
+        flex-direction: column;
+        justify-content: center;
+        gap: 5px;
+        width: 32px;
+        height: 32px;
+        background: none;
+        border: none;
+        cursor: pointer;
+        padding: 0;
+      }
+
+      .menu-toggle span {
+        display: block;
+        width: 100%;
+        height: 2px;
+        background-color: #1a2744;
+      }
+
+      .about-hero {
+        position: relative;
+        background-color: #f1f5fa;
+        overflow: hidden;
+      }
+
+      .about-hero::before,
+      .about-hero::after {
+        content: "";
+        position: absolute;
+        border-radius: 50%;
+        background-color: #e3ebf5;
+        z-index: 0;
+      }
+
+      .about-hero::before {
+        width: 350px;
+        height: 350px;
+        bottom: -150px;
+        left: -150px;
+      }
+
+      .about-hero::after {
+        width: 300px;
+        height: 300px;
+        top: -100px;
+        right: -120px;
+      }
+
+      .about-hero-inner {
+        position: relative;
+        z-index: 1;
+        max-width: 1800px;
+        margin: 0 auto;
+        padding: 0 20px;
+        display: flex;
+        align-items: stretch;
+        min-height: 480px;
+      }
+
+      .about-hero-text {
+        flex: 0 0 40%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        padding: 60px 0 60px 60px;
+        position: relative;
+        z-index: 2;
+      }
+
+      .about-label {
+        font-family: sans-serif;
+        font-size: 14px;
+        letter-spacing: 3px;
+        text-transform: uppercase;
+        color: #6b7280;
+        margin: 0 0 20px 0;
+      }
+
+      .about-heading {
+        font-family: sans-serif;
+        font-size: 60px;
+        font-weight: 800;
+        line-height: 1.1;
+        color: #1a2744;
+        margin: 0 0 25px 0;
+      }
+
+      .about-name {
+        display: block;
+        color: #c9a04c;
+      }
+
+      .about-subtext {
+        font-family: sans-serif;
+        font-size: 20px;
+        line-height: 1.4;
+        color: #1a2744;
+        max-width: 360px;
+        margin: 0;
+      }
+
+      .about-hero-image-wrapper {
+        flex: 1;
+        position: relative;
+      }
+
+      .about-hero-image {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+      }
+
+      .about-hero-image-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(to right, #f1f5fa 0%, transparent 30%);
+      }
+
+      .about-hero-wave {
+        position: absolute;
+        bottom: -1px;
+        left: 0;
+        width: 100%;
+        height: 60px;
+        z-index: 3;
+        display: block;
+      }
+
+      .story-section {
+        background-color: white;
+        padding: 70px 0 90px;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .story-inner {
+        max-width: 1800px;
+        margin: 0 auto;
+        padding: 0 60px;
+        position: relative;
+      }
+
+      .story-heading {
+        font-family: sans-serif;
+        font-size: 36px;
+        font-weight: 800;
+        color: #1a2744;
+        margin: 0 0 60px 0;
+        position: relative;
+        z-index: 2;
+      }
+
+.story-plane-path {
+  --plane-top: -20px;
+  --plane-left: calc(28% + 220px);
+  --plane-width: 380px;
+
+  position: absolute;
+  top: var(--plane-top);
+  left: var(--plane-left);
+  width: var(--plane-width);
+  height: auto;
+  z-index: 1;
+}
+
+      .story-blob-wrapper {
+        position: absolute;
+        top: -75px;
+        right: -80px;
+        width: 420px;
+        height: 340px;
+        z-index: 0;
+      }
+
+      .story-blob-image {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+        clip-path: url(#blobShape);
+        background-color: #dce9f7; 
+}
+
+      .story-steps {
+        display: flex;
+        align-items: flex-start;
+        gap: 20px;
+        position: relative;
+        z-index: 2;
+      }
+
+      .story-step {
+        flex: 1;
+      }
+
+      .story-step-icon {
+        width: 80px;
+        height: 80px;
+        background-color: #eef3f9;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 20px;
+      }
+
+      .story-step-title {
+        font-family: sans-serif;
+        font-size: 18px;
+        font-weight: 700;
+        color: #1a2744;
+        margin: 0 0 12px 0;
+      }
+
+      .story-step-text {
+        font-family: sans-serif;
+        font-size: 15px;
+        line-height: 1.5;
+        color: #555;
+        margin: 0;
+        max-width: 320px;
+      }
+
+      .story-arrow {
+        flex: 0 0 auto;
+        margin-top: 30px;
+      }
+
+.facts-section {
+  background-color: white;
+  padding: 80px 0 90px;
+}
+
+.facts-inner {
+  max-width: 1800px;
+  margin: 0 auto;
+  padding: 0 60px;
+}
+
+.facts-heading {
+  font-family: sans-serif;
+  font-size: 36px;
+  font-weight: 800;
+  color: #1a2744;
+  margin: 0 0 60px 0;
+}
+
+.facts-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+}
+
+.fact-item {
+  text-align: center;
+  padding: 0 25px;
+  border-right: 1px solid #e5e7eb;
+}
+
+.fact-item:last-child {
+  border-right: none;
+}
+
+.fact-icon {
+  width: 68px;
+  height: 68px;
+  background-color: #eef3f9;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 18px auto;
+}
+
+.fact-title {
+  font-family: sans-serif;
+  font-size: 17px;
+  font-weight: 700;
+  color: #1a2744;
+  margin: 0 0 8px 0;
+}
+
+.fact-text {
+  font-family: sans-serif;
+  font-size: 14px;
+  line-height: 1.5;
+  color: #666;
+  margin: 0;
+}
+/* ========== MEIN ZIEL ========== */
+.goal-section {
+  background-color: white;
+}
+
+.goal-box {
+  background-color: #eef3f9;
+  border-radius: 50px 50px 0 0;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Deko-Kreise im Hintergrund */
+.goal-box::before,
+.goal-box::after {
+  content: "";
+  position: absolute;
+  border-radius: 50%;
+  background-color: #e3ebf5;
+  z-index: 0;
+}
+
+.goal-box::before {
+  width: 300px;
+  height: 300px;
+  bottom: -160px;
+  left: -120px;
+}
+
+.goal-box::after {
+  width: 260px;
+  height: 260px;
+  top: -130px;
+  right: -100px;
+}
+
+.goal-inner {
+  max-width: 1800px;
+  margin: 0 auto;
+  padding: 70px 60px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 40px;
+  position: relative;
+  z-index: 1;
+}
+
+.goal-text {
+  flex: 1;
+  max-width: 560px;
+}
+
+.goal-label {
+  font-family: sans-serif;
+  font-size: 16px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: #c9a04c;
+  margin: 0 0 15px 0;
+}
+
+.goal-heading {
+  font-family: sans-serif;
+  font-size: 34px;
+  font-weight: 800;
+  line-height: 1.25;
+  color: #1a2744;
+  margin: 0 0 35px 0;
+}
+
+.goal-accent {
+  color: #c9a04c;
+}
+
+.goal-text .btn-primary {
+  display: inline-block;
+}
+
+.goal-graphic {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.goal-mountain {
+  width: 300px;
+  height: auto;
+}
+
+.goal-handwritten {
+  transform: rotate(-8deg);
+  margin-top: 40px;
+}
+
+.goal-handwritten-text {
+  font-family: 'Reenie Beanie', cursive;
+  font-size: 38px;
+  line-height: 1;
+  color: #1a2744;
+  margin: 0;
+}
+
+.goal-handwritten-underline {
+  display: block;
+  margin-top: 4px;
+}
+
+.btn-primary {
+  display: inline-block;
+  background-color: #1a2744;
+  color: white;
+  text-decoration: none;
+  padding: 14px 28px;
+  border-radius: 10px;
+  font-family: sans-serif;
+  font-weight: 500;
+  transition: background-color 0.2s ease;
+}
+
+.btn-primary:hover {
+  background-color: #c9a04c;
+}
+
+      .site-footer {
+        position: relative;
+        overflow: hidden;
+        padding: 40px 20px 25px;
+        text-align: center;
+        background: radial-gradient(circle at top, #1a3160 0%, #0d1b36 70%);
+      }
+
+      .site-footer::before,
+      .site-footer::after {
+        content: "";
+        position: absolute;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.04);
+        z-index: 0;
+      }
+
+      .site-footer::before {
+        width: 400px;
+        height: 400px;
+        top: -180px;
+        left: -220px;
+      }
+
+      .site-footer::after {
+        width: 400px;
+        height: 400px;
+        bottom: -220px;
+        right: -220px;
+      }
+
+      .footer-logo {
+        position: relative;
+        z-index: 1;
+        font-size: 1.8rem;
+        letter-spacing: 2px;
+        color: #ffffff;
+        font-weight: 300;
+        text-transform: uppercase;
+      }
+
+      .footer-logo .highlight {
+        color: #e0b97d;
+        font-weight: 700;
+        position: relative;
+      }
+
+      .footer-logo .highlight::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: -5px;
+        height: 4px;
+        background: #e0b97d;
+        border-radius: 50%;
+      }
+
+      .footer-subtitle {
+        position: relative;
+        z-index: 1;
+        margin-top: 10px;
+        font-size: 0.95rem;
+        color: #9fb0cf;
+        font-weight: 300;
+      }
+
+      .footer-nav {
+        position: relative;
+        z-index: 1;
+        display: flex;
+        justify-content: center;
+        gap: 0;
+        margin-top: 20px;
+      }
+
+      .footer-nav a {
+        color: #ffffff;
+        text-decoration: none;
+        font-size: 0.95rem;
+        padding: 0 18px;
+        border-right: 1px solid rgba(255, 255, 255, 0.3);
+        transition: color 0.2s ease;
+      }
+
+      .footer-nav a:last-child {
+        border-right: none;
+      }
+
+      .footer-nav a:hover {
+        color: #e0b97d;
+      }
+
+      .footer-divider {
+        position: relative;
+        z-index: 1;
+        max-width: 1200px;
+        margin: 20px auto 0;
+        border: none;
+        border-top: 1px solid rgba(255, 255, 255, 0.25);
+      }
+
+      .footer-copyright {
+        position: relative;
+        z-index: 1;
+        margin-top: 15px;
+        font-size: 0.85rem;
+        color: #7c8db0;
+      }
+
+      /* ========== HANDY-ANSICHT ========== */
+      @media (max-width: 768px) {
+        /* Header (gleich wie index.html) */
+        .site-header {
+          padding: 15px 20px;
+        }
+
+        .header-inner {
+          padding: 0;
+        }
+
+        .logo {
+          font-size: 18px;
+        }
+
+        .menu-toggle {
+          display: flex;
+        }
+
+        .main-nav {
+          display: none;
+          position: absolute;
+          top: 100%;
+          left: 0;
+          right: 0;
+          width: 100%;
+          background-color: white;
+          padding: 20px;
+          box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+          z-index: 20;
+        }
+
+        .main-nav.open {
+          display: block;
+        }
+
+        .main-nav ul {
+          flex-direction: column;
+          gap: 12px;
+        }
+
+        .main-nav a {
+          font-size: 13px;
+        }
+
+        .login-icon {
+          width: 34px;
+          height: 34px;
+        }
+
+        /* Neu: Über-mich-Hero */
+        .about-hero-inner {
+          flex-direction: column;
+          min-height: auto;
+          padding: 0;
+        }
+
+        .about-hero-text {
+          flex: none;
+          padding: 40px 20px 30px;
+        }
+
+        .about-heading {
+          font-size: 40px;
+        }
+
+        .about-subtext {
+          font-size: 17px;
+          max-width: 100%;
+        }
+
+        .about-hero-image-wrapper {
+          height: 300px;
+        }
+
+        .about-hero-image-overlay {
+          display: none;
+        }
+
+        .about-hero-wave {
+          height: 30px;
+        }
+
+        /* Neu: Wie alles angefangen hat */
+        .story-section {
+          padding: 40px 0 60px;
+        }
+
+        .story-inner {
+          padding: 0 20px;
+        }
+
+        .story-heading {
+          font-size: 28px;
+          margin-bottom: 30px;
+        }
+
+        .story-plane-path {
+          display: none;
+        }
+
+        .story-steps {
+          flex-direction: column;
+          gap: 35px;
+        }
+
+        .story-arrow {
+          display: none;
+        }
+
+        .story-step-text {
+          max-width: 100%;
+        }
+
+        .story-blob-wrapper {
+          position: relative;
+          top: auto;
+          right: auto;
+          width: 100%;
+          height: 240px;
+          margin-top: 40px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- ========== HEADER ========== -->
+    <header class="site-header">
+      <div class="header-inner">
+        <div class="logo">
+          <span class="logo-lernen">Lernen</span>
+          <span class="logo-mit">mit</span>
+          <span class="logo-links">Links</span>
+        </div>
+
+        <nav class="main-nav" id="mainNav">
+          <ul>
+            <li><a href="index.html">Startseite</a></li>
+            <li><a href="kurse.html">Kurse</a></li>
+            <li><a href="so-funktionierts.html">So funktioniert's</a></li>
+            <li><a href="ueber-mich.html" class="active">Über mich</a></li>
+            <li><a href="faq.html">FAQ</a></li>
+          </ul>
+        </nav>
+
+        <div class="header-right">
+          <a href="login.html" class="login-icon" aria-label="Zur Anmeldung">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+              <circle cx="12" cy="8" r="4" stroke="white" stroke-width="2" />
+              <path d="M4 20c0-4 4-6 8-6s8 2 8 6" stroke="white" stroke-width="2" stroke-linecap="round" />
+            </svg>
+          </a>
+
+          <button class="menu-toggle" id="menuToggle" aria-label="Menü öffnen">
+            <span></span>
+            <span></span>
+            <span></span>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <section class="about-hero">
+      <div class="about-hero-inner">
+        <div class="about-hero-text">
+          <p class="about-label">Über mich</p>
+          <h1 class="about-heading">
+            Hi, ich bin
+            <span class="about-name">Samuel.</span>
+          </h1>
+          <p class="about-subtext">
+            Lehrer · Pädagoge · Gründer
+          </p>
+        </div>
+
+        <div class="about-hero-image-wrapper">
+          <img src="img/samuel.jpg" class="about-hero-image" alt="-" />
+          <div class="about-hero-image-overlay"></div>
+        </div>
+      </div>
+
+      <svg class="about-hero-wave" viewBox="0 0 1440 60" preserveAspectRatio="none">
+        <path d="M0 60 L0 30 Q 360 0, 720 30 T 1440 0 L1440 60 Z" fill="white" />
+      </svg>
+    </section>
+
+    <section class="story-section">
+      <div class="story-inner">
+        <h2 class="story-heading">Wie alles angefangen hat</h2>
+
+
+<svg class="story-plane-path" viewBox="220 -20 380 150" fill="none">
+  <path
+    d="M230 120 Q 330 118, 385 95 Q 440 70, 420 52 Q 395 35, 390 65 Q 392 100, 470 78 Q 520 60, 555 28"
+    stroke="#1a2744"
+    stroke-width="2"
+    stroke-dasharray="6 6"
+    stroke-linecap="round"
+  />
+  <g transform="translate(545, -18) scale(1.8)">
+    <path
+      d="M17.8 19.2 16 11l3.5-3.5C21 6 21.5 4 21 3c-1-.5-3 0-4.5 1.5L13 8 4.8 6.2c-.5-.1-.9.1-1.1.5l-.3.5c-.2.5-.1 1 .3 1.3L9 12l-2 3H4l-1 1 3 2 2 3 1-1v-3l3-2 3.5 5.3c.3.4.8.5 1.3.3l.5-.2c.4-.3.6-.7.5-1.2z"
+      fill="#1a2744"
+    />
+  </g>
+</svg>
+
+        <div class="story-steps">
+          <div class="story-step">
+            <div class="story-step-icon">
+              <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#1a2744" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M2 10l10-5 10 5-10 5z" />
+                <path d="M6 12v5c3 3 9 3 12 0v-5" />
+                <path d="M22 10v6" />
+              </svg>
+            </div>
+            <h3 class="story-step-title">1. Ich sehe das Problem</h3>
+            <p class="story-step-text">
+              In der Schule erlebe ich immer wieder, wie viele an Matheaufgaben verzweifeln – oft nicht,
+              weil sie es nicht können, sondern weil der richtige Zugang fehlt.
+            </p>
+          </div>
+
+          <svg class="story-arrow" width="60" height="36" viewBox="0 0 60 36" fill="none" stroke="#1a2744" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M4 32 Q 16 6, 52 12" />
+            <path d="M44 6 L53 12 L45 19" />
+</svg>
+
+          <div class="story-step">
+            <div class="story-step-icon">
+              <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#1a2744" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M17.8 19.2 16 11l3.5-3.5C21 6 21.5 4 21 3c-1-.5-3 0-4.5 1.5L13 8 4.8 6.2c-.5-.1-.9.1-1.1.5l-.3.5c-.2.5-.1 1 .3 1.3L9 12l-2 3H4l-1 1 3 2 2 3 1-1v-3l3-2 3.5 5.3c.3.4.8.5 1.3.3l.5-.2c.4-.3.6-.7.5-1.2z" />
+              </svg>
+            </div>
+            <h3 class="story-step-title">2. Eine Idee auf Reisen</h3>
+            <p class="story-step-text">
+              Auf einer meiner Reisen kam mir die Idee: eine verständliche, strukturierte
+              Online-Vorbereitung für die Matheprüfung – genau auf das, was wirklich wichtig ist.
+            </p>
+          </div>
+
+          <!-- Pfeil -->
+          <svg class="story-arrow" width="60" height="36" viewBox="0 0 60 36" fill="none" stroke="#1a2744" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M4 32 Q 16 6, 52 12" />
+        <path d="M44 6 L53 12 L45 19" />
+</svg>
+
+          <!-- Schritt 3 -->
+          <div class="story-step">
+            <div class="story-step-icon">
+              <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#1a2744" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M15 14c.2-1 .7-1.7 1.5-2.5 1-.9 1.5-2.2 1.5-3.5A6 6 0 0 0 6 8c0 1 .2 2.2 1.5 3.5.7.7 1.3 1.5 1.5 2.5" />
+                <path d="M9 18h6" />
+                <path d="M10 22h4" />
+              </svg>
+            </div>
+            <h3 class="story-step-title">3. Jetzt wird's ernst</h3>
+            <p class="story-step-text">
+              Lange hat mir der Mut gefehlt, diese Idee wirklich umzusetzen. Jetzt möchte ich dieses
+              Problem angehen und dich auf deinem Weg zur Prüfung unterstützen.
+            </p>
+          </div>
+        </div>
+
+<div class="story-blob-wrapper">
+  <img src="img/reise.jpg" class="story-blob-image" alt="--" />
+</div>
+
+<svg width="0" height="0" style="position: absolute;">
+  <defs>
+    <clipPath id="blobShape" clipPathUnits="objectBoundingBox">
+      <path d="M0.25,0.02 C0.45,-0.02 0.75,0.05 1,0 L1,1 C0.85,0.98 0.72,0.85 0.6,0.75 C0.48,0.65 0.4,0.72 0.28,0.62 C0.16,0.52 0.02,0.45 0.03,0.28 C0.04,0.12 0.12,0.05 0.25,0.02 Z" />
+        </clipPath>
+  </defs>
+</svg>
+
+      </div>
+    </section>
+
+<section class="facts-section">
+  <div class="facts-inner">
+    <h2 class="facts-heading">Ein paar Fakten zu mir</h2>
+
+    <div class="facts-grid">
+      <div class="fact-item">
+        <div class="fact-icon">
+          <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#1a2744" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M2 10l10-5 10 5-10 5z" />
+            <path d="M6 12v5c3 3 9 3 12 0v-5" />
+            <path d="M22 10v6" />
+          </svg>
+        </div>
+        <h3 class="fact-title">Lehrer</h3>
+        <p class="fact-text">Seit vielen Jahren für Mathematik an einer Realschule in Baden-Württemberg tätig.</p>
+      </div>
+
+      <div class="fact-item">
+        <div class="fact-icon">
+          <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#1a2744" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M2 4h6a4 4 0 0 1 4 4v13a3 3 0 0 0-3-3H2z" />
+            <path d="M22 4h-6a4 4 0 0 0-4 4v13a3 3 0 0 1 3-3h7z" />
+          </svg>
+        </div>
+        <h3 class="fact-title">Praktische Erfahrung</h3>
+        <p class="fact-text">Ich kenne die typischen Schwierigkeiten und Prüfungsanforderungen.</p>
+      </div>
+
+      <div class="fact-item">
+        <div class="fact-icon">
+          <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#1a2744" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <polygon points="12 2 15.1 8.3 22 9.3 17 14.1 18.2 21 12 17.8 5.8 21 7 14.1 2 9.3 8.9 8.3 12 2" />
+          </svg>
+        </div>
+        <h3 class="fact-title">Erklären ist mein Ding</h3>
+        <p class="fact-text">Ich mag es, komplexe Themen einfach und verständlich zu erklären.</p>
+      </div>
+
+      <div class="fact-item">
+        <div class="fact-icon">
+          <svg width="30" height="30" viewBox="0 0 24 24" fill="#1a2744" stroke="#1a2744" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M9 18V5l12-2v13" fill="none" />
+            <circle cx="6" cy="18" r="3" />
+            <circle cx="18" cy="16" r="3" />
+          </svg>
+        </div>
+        <h3 class="fact-title">Ausgleich durch Musik</h3>
+        <p class="fact-text">Neben der Schule bin ich gerne musikalisch unterwegs – das gibt mir neue Energie.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="goal-section">
+  <div class="goal-box">
+    <div class="goal-inner">
+      <div class="goal-text">
+        <p class="goal-label">Mein Ziel</p>
+        <h2 class="goal-heading">
+          Du sollst Mathe nicht nur irgendwie schaffen –
+          sondern <span class="goal-accent">wirklich verstehen</span>.
+        </h2>
+        <a href="kurse.html" class="btn-primary">Zu den Kursen →</a>
+      </div>
+
+      <div class="goal-graphic">
+        <svg class="goal-mountain" viewBox="0 0 300 260" fill="none" stroke="#1a2744" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M10 245 Q 70 215, 105 170 Q 130 135, 160 128 Q 185 122, 200 95 Q 212 72, 225 65 Q 240 80, 265 100" />
+          <path d="M130 175 Q 155 150, 180 150 Q 205 150, 215 120" />
+          <path d="M120 255 Q 70 250, 85 228 Q 100 208, 150 210 Q 190 212, 180 192 Q 172 178, 150 182" />
+          <path d="M225 65 L225 22" />
+        <path d="M225 22 Q 238 18, 250 25 Q 244 31, 250 38 Q 238 32, 225 38 Z" fill="none" stroke="#c9a04c" />        </svg>
+
+        <div class="goal-handwritten">
+          <p class="goal-handwritten-text">Schritt<br>für Schritt<br>zur Prüfung</p>
+          <svg class="goal-handwritten-underline" width="140" height="18" viewBox="0 0 140 18" fill="none" stroke="#c9a04c" stroke-width="3" stroke-linecap="round">
+            <path d="M5 13 Q 70 3, 135 8" />
+            <path d="M15 16 Q 70 9, 125 12" stroke-width="2" />
+          </svg>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+    <footer class="site-footer">
+      <div class="footer-logo">Lernen mit <span class="highlight">Links</span></div>
+      <p class="footer-subtitle">Deine Vorbereitung auf die Matheprüfung in Baden-Württemberg.</p>
+
+      <nav class="footer-nav">
+        <a href="impressum.html">Impressum</a>
+        <a href="datenschutz.html">Datenschutz</a>
+        <a href="kontakt.html">Kontakt</a>
+      </nav>
+
+      <hr class="footer-divider" />
+      <p class="footer-copyright">&copy; 2026 Lernen mit Links. Alle Rechte vorbehalten.</p>
+    </footer>
+
+    <script>
+      const menuToggle = document.getElementById("menuToggle");
+      const mainNav = document.getElementById("mainNav");
+
+      menuToggle.addEventListener("click", () => {
+        mainNav.classList.toggle("open");
+      });
+    </script>
+  </body>
+</html>
