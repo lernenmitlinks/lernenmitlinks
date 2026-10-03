@@ -44,16 +44,16 @@
                 </div>
             </header>
 
-            <section class="content-body">
-                <div class="welcome-box">
-                    <div class="welcome-text">
-                        <h1>Hallo!</h1>
-                        <p>Schön, dass du da bist!</p>
+            <section class="exercise-content-body" data-topic='<%= JSON.stringify(topic) %>'>
+                <div class="name-box">
+                    <div class="name-text">
+                        <h1 id="topic-name"></h1>
+                        <p id="topic-description"></p>
                     </div>
                 </div>
 
-                <!-- Dashboard -->
-                <div class="dashboard-grid">
+                <!-- Einzelne Aufgaben -->
+                <div class="exercise-content">
                     <div class="card progress-card">
                         <h2>Mein Lernfortschritt</h2>
                         <div class="progress-wrapper">
@@ -66,17 +66,27 @@
                                 <h3>Gesamtfortschritt</h3>
                                 <p class="status-good">Sehr gut! Weiter so!</p>
                                 <div class="progress-bar-bg">
-                                    <div class="progress-bar-fill" style="width: 72%;"></div>
+                                    <div class="progress-bar-fill" style="width: 0%;"></div>
                                 </div>
                                 <p class="sub-text">Du bist auf einem sehr guten Weg.</p>
                             </div>
                         </div>
                     </div>
 
-                    <div class="card topics-card">
-                        <h2>Meine Themen</h2>
-                        <div class="topics-list-container">
-                            <!-- the actual cards will be shown here through frontend.js -->
+                    <div class="topic-subtata" style="display: block;">
+                        <h2>Choose a subcategory</h2>
+                        <div class="subdata">
+
+                        </div>
+                    </div>
+
+                    <div class="exercise-container" style="display: none;">
+                        <h2></h2>
+                        <div class="exercise">
+                            <div class="question-card">
+                                <h2>Exercise n</h2>
+                                <h3></h3>
+                            </div>
                         </div>
                     </div>
 
@@ -84,7 +94,8 @@
             </section>
         </main>
     </div>
+
     <script src="./assets/js/syncStore.js" defer></script>
-    <script src="./assets/js/frontend.js" defer></script>
+    <script src="./assets/js/exerciseHandler.js" defer></script>
 </body>
 </html>

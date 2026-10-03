@@ -1,3 +1,4 @@
+// server.js
 const express = require('express')
 const path = require('path')
 const app = express()
@@ -8,90 +9,92 @@ app.use(express.json())
 const mockDatabase = {
 
     // template user
-    user: {
-        id: 525810958,
-        username: 'petkoslaw',
-        grade: 10,
-        xp: 1250,
-        streakDays: 5,
-        overallProgress: 72 // this is in % (100% is all the topics that the student chose)
+    users: {
+        525810958: {
+            id: 525810958,
+            username: 'petkoslaw',
+            grade: 10,
+            xp: 1250,
+            streakDays: 0,
+            overallProgress: {
+                "rechnen": 0,
+                "brüche": 0,
+                "potenzen": 0,
+                "würzeln": 0,
+            }
+        },
+        103072006: {
+            id: 103072006,
+            username: 'AfonsoStuf',
+            grade: 10,
+            xp: 1250,
+            streakDays: 0,
+            overallProgress: {
+                "rechnen": 0,
+                "brüche": 0,
+                "potenzen": 0,
+                "würzeln": 0,
+            }
+        }
+    },
+
+    exercises: {
+        "02-gleichungen": [
+            {
+                id: "1",
+                subcategoryId: "grundlagen",
+                question: "Was ist x + 2 = 5?",
+                options: ["1", "2", "3", "4"],
+                correctIndex: 2
+            },
+        ]
     },
 
     topics: [
         {
-            id: "01-grundlagen",
-            title: "01 Grundlagen",
-            description: "Rechnen, Brüche, Potenzen & Wurzeln",
-            progress: 85,
+            id: "02-gleichungen",
+            title: "02 Gleichungen",
+            description: "",
+            progress: 30,
             unlocked: true,
-            icon: "fa-calculator"
-        },
-        {
-            id: "02-terme-gleichungen",
-            title: "02 Terme & Gleichungen",
-            description: "Terme vereinfachen, Gleichungen lösen",
-            progress: 70,
-            unlocked: true,
-            icon: "fa-square-root-variable"
-        },
-        {
-            id: "03-trigonometrie",
-            title: "03 Trigonometrie in der Ebene",
-            description: "Sinus, Kosinus, Tangens & Dreiecke",
-            progress: 65,
-            unlocked: true,
-            icon: "fa-shapes"
-        },
-        {
-            id: "04-koerper",
-            title: "04 Körper",
-            description: "Volumen, Oberfläche & räumliche Geometrie",
-            progress: 78,
-            unlocked: true,
-            icon: "fa-cube"
-        },
-        {
-            id: "05-prozentrechnungen",
-            title: "05 Prozentrechnungen",
-            description: "Prozent, Zins & Sachaufgaben",
-            progress: 60,
-            unlocked: true,
-            icon: "fa-percent"
-        },
-        {
-            id: "06-funktionen",
-            title: "06 Funktionen",
-            description: "Geraden, Parabeln & Funktionsgleichungen",
-            progress: 50,
-            unlocked: true,
-            icon: "fa-chart-line"
-        }
-    ],
+            icon: "fa-calculator",
+            subcategories: {
+                "grundlagen": {
+                    id: "grundlagen",
+                    name: "Grundlagen",
+                    description: "",
+                },
+                "lineare-gleichungen": {
+                    id: "lineare-gleichungen",
+                    name: "Lineare Gleichungen",
+                    description: "",
+                },
+                "quadratische-gleichungen": {
+                    id: "quadratische-gleichungen",
+                    name: "Quadratische Gleichungen",
 
-    lessons: {
-        "02-terme-gleichungen": [
-            {
-                id: "q1",
-                question: "Löse nach x auf: 2x + 6 = 14",
-                options: ["x = 3", "x = 4", "x = 5", "x = 8"],
-                correctAnswer: 1,
-                xpReward: 15
+                },
+                "bruch-gleichungen": {
+                    id: "bruch-gleichungen",
+                    name: "Bruchgleichungen",
+                },
             },
-            {
-                id: "q2",
-                question: "Löse die quadratische Gleichung: x² - 5x + 6 = 0",
-                options: ["x = 1, x = 6", "x = 2, x = 3", "x = -2, x = -3", "x = 0, x = 5"],
-                correctAnswer: 1,
-                xpReward: 25
-            }
-        ]
-    }
+        },
+    ],
 }
 
 // this thing here gets the template data
-app.get('/api/dashboard', async (req, res) => {
+app.get('/api/dashboard/:userId', async (req, res) => {
+    const { userId } = req.params
+    console.log(`Fetching dashboard for User ID: ${userId}`)
+    
+    const user = mockDatabase.users[userId]
+    if (!user) {
+        return res.status(404).json({ error: "User not found "})
+    }
+
     res.json({
-        user: mockDatabase.user,
+        user: user,
         topics: mockDatabase.topics
     })
 })
@@ -99,8 +102,38 @@ app.get('/api/dashboard', async (req, res) => {
 // this here then gets the lesson questions for a specific topic (like Trigonometrie n stuff like that)
 app.get('/api/lessons/:topicId', (req, res) => {
     const { topicId } = req.params
-    const questions = mockDatabase.lessons[topicId] || []
-    res.json({ topicId, questions })
+    console.log(`Fetching topic & exercises for: ${topicId}`)
+
+    const topic = mockDatabase.topics.find(t => t.id === topicId)
+    if (!topic) return res.status(404).json({ error: "Topic not found" })
+
+    const allExercises = mockDatabase.exercises[topicId]
+
+    res.json({ ...topic, allExercises})
+})
+
+app.get('/api/user/:userId/progress', (req, res) => {
+    const { userId } = req.params
+    const { topicId, questionId, correct } = req.body
+
+    const user = mockDatabase.users[userId]
+    if (!user) return
+
+    if (correct) {
+        user.xp += 10
+
+        if (user.overallProgress[topicId] !== undefined) {
+            user.overallProgress[topicId] = Math.min(100, user.overallProgress[topicId] + 10)
+        }
+    }
+
+    console.log(`Updated progress for user ${userId}: `, user)
+
+    res.json({
+        user: user,
+        topics: mockDatabase.topics
+    })
+
 })
 
 // I genuinely have no idea what this does

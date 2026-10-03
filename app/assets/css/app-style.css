@@ -245,3 +245,38 @@ body {
     border: 1px solid #1b242e;
     border-radius: 15px;
 }
+
+/* EINZELNE AUFGABEN */
+
+.exercise-content-body {
+    padding: 32px;
+    max-width: 1700px;
+    width: 100%;
+    margin: 0 auto;
+}
+
+.name-box {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 28px;
+}
+
+.name-text h1 {
+    font-size: 1.8rem;
+    color: #1a252f;
+    margin-bottom: 4px;
+}
+
+.name-text p {
+    color: #1a252f;
+    font-weight: 500;
+    font-size: 1.3rem;
+}
+
+.exercise-container {
+    padding: 10px;
+    max-width: 1700px;
+    width: 100%;
+    margin: 0 auto;
+}
