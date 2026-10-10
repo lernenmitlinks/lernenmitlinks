@@ -8,12 +8,9 @@ document.addEventListener('DOMContentLoaded', async () => {
     window.addEventListener('sessionUpdated', (e) => {
         renderDashboard(e.detail)
     })
-
 })
 
-// gets the data that will then be displayed on the Übersicht
 async function renderDashboard(data) {
-
     if (!data) return
 
     const welcomeText = document.querySelector(".welcome-text")
@@ -21,15 +18,21 @@ async function renderDashboard(data) {
         welcomeText.querySelector("h1").innerText = "Hallo, " + data.user.username
     }
 
-    const overallProgress = document.querySelector(".overall-progress-text")
-    if (overallProgress && data.topics) {
-        // calculation
+    const topics = data.topics || []
+    if (topics.length > 0) {
+        const totalProgress = topics.reduce((acc, t) => acc + (t.progress || 0), 0)
+        const avgProgress = Math.round(totalProgress / topics.length)
+        
+        const overallProgressText = document.querySelector(".overall-progress-text")
+        if (overallProgressText) overallProgressText.innerText = avgProgress + "%"
+
+        const progressBarFill = document.querySelector(".progress-bar-fill")
+        if (progressBarFill) progressBarFill.style.width = avgProgress + "%"
     }
 
-    renderTopics(data.topics || [])
+    renderTopics(topics)
 }
 
-// this here will actually then display the data on the Übersicht
 function renderTopics(topics) {
     const container = document.querySelector('.topics-list-container')
     if (!container) return;
@@ -42,10 +45,10 @@ function renderTopics(topics) {
             </div>
             <div class="topic-progress-bar">
                 <div class="progress-bar-bg">
-                    <div class="progress-bar-fill" style="width: ${topic.progress}%;"></div>
+                    <div class="progress-bar-fill" style="width: ${topic.progress || 0}%;"></div>
                 </div>
-                <span class="topic-percentage">${topic.progress}%</span>
-                <a href="aufgabe.html#${topic.id}" class="arrow">></a>
+                <span class="topic-percentage">${topic.progress || 0}%</span>
+                <a href="aufgabe.html#${topic.id}" class="arrow">&gt;</a>
             </div>
         </div>
     `).join('');

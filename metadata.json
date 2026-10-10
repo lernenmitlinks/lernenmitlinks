@@ -1,0 +1,86 @@
+{
+  "users": {
+    "525810958": {
+      "id": 525810958,
+      "username": "petkoslaw",
+      "grade": 10,
+      "xp": 1270,
+      "streakDays": 0,
+      "overallProgress": {
+        "02-gleichungen": 25
+      },
+      "subcategoryProgress": {
+        "02-gleichungen": {
+          "grundlagen": 100,
+          "lineare-gleichungen": 0,
+          "quadratische-gleichungen": 0,
+          "bruch-gleichungen": 0
+        }
+      }
+    }
+  },
+  "exercises": {
+    "02-gleichungen": [
+      {
+        "id": "e1",
+        "subcategoryId": "grundlagen",
+        "question": "Löse nach $x$ auf: $x + 5 = 12$",
+        "hint": "Subtrahiere 5 auf beiden Seiten.",
+        "correctAnswer": "7"
+      },
+      {
+        "id": "e2",
+        "subcategoryId": "lineare-gleichungen",
+        "question": "Bestimme die Lösung für die lineare Gleichung: $3x - 4 = 11$",
+        "hint": "Addiere 4 und teile durch 3.",
+        "correctAnswer": "5"
+      },
+      {
+        "id": "e3",
+        "subcategoryId": "quadratische-gleichungen",
+        "question": "Finde die positive Lösung von $x^2 = 49$",
+        "hint": "Ziehe auf beiden Seiten die Wurzel.",
+        "correctAnswer": "7"
+      },
+      {
+        "id": "e4",
+        "subcategoryId": "bruch-gleichungen",
+        "question": "Löse die Bruchgleichung für $x \\neq 0$: $\\frac{8}{x} = 4$",
+        "hint": "Multipliziere mit $x$ und teile durch 4.",
+        "correctAnswer": "2"
+      }
+    ]
+  },
+  "topics": [
+    {
+      "id": "02-gleichungen",
+      "title": "02 Gleichungen",
+      "description": "Realschule BW Prüfungsvorbereitung: Grundlagen, lineare, quadratische und Bruchgleichungen.",
+      "progress": 25,
+      "unlocked": true,
+      "icon": "fa-calculator",
+      "subcategories": {
+        "grundlagen": {
+          "id": "grundlagen",
+          "name": "Grundlagen",
+          "description": "Einfache Äquivalenzumformungen."
+        },
+        "lineare-gleichungen": {
+          "id": "lineare-gleichungen",
+          "name": "Lineare Gleichungen",
+          "description": "Gleichungen mit $x$ auf beiden Seiten."
+        },
+        "quadratische-gleichungen": {
+          "id": "quadratische-gleichungen",
+          "name": "Quadratische Gleichungen",
+          "description": "Gleichungen mit $x^2$."
+        },
+        "bruch-gleichungen": {
+          "id": "bruch-gleichungen",
+          "name": "Bruchgleichungen",
+          "description": "Gleichungen mit der Unbekannten im Nenner."
+        }
+      }
+    }
+  ]
+}

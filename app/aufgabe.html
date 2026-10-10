@@ -4,93 +4,55 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lernen mit Links - Übersicht</title>
-    <link rel="stylesheet" href="./assets/css/app-style.css" </head>
+    <title>Lernen mit Links - Aufgabe</title>
+    <link rel="stylesheet" href="./assets/css/app-style.css">
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']]
+            }
+        };
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
 
 <body>
     <div class="app-layout">
         <aside class="sidebar">
-            <div class="logo">
-                <span class="logo-bold">LERNEN MIT LINKS</span>
-            </div>
-
+            <div class="logo"><span class="logo-bold">LERNEN MIT LINKS</span></div>
             <nav class="sidebar-nav">
-                <a href="/app/index.html" class="nav-item active">
-                    <i class="fa-solid fa-house icon"></i> Übersicht
-                </a>
-                <a href="/app/themen.html" class="nav-item">
-                    <i class="fa-solid fa-book-open icon"></i> Themen
-                </a>
-                <a href="/app/training.html" class="nav-item">
-                    <i class="fa-solid fa-bullseye icon"></i> Training
-                </a>
-                <a href="/app/pruefungen.html" class="nav-item">
-                    <i class="fa-solid fa-file-signature icon"></i> Prüfungen
-                </a>
-                <a href="/app/statistik.html" class="nav-item">
-                    <i class="fa-solid fa-chart-simple icon"></i> Statistik
-                </a>
-                <a href="/app/einstellungen.html" class="nav-item">
-                    <i class="fa-solid fa-gear icon"></i> Einstellungen
-                </a>
+                <a href="/app/index.html" class="nav-item"><i class="fa-solid fa-house icon"></i> Übersicht</a>
+                <a href="/app/themen.html" class="nav-item"><i class="fa-solid fa-book-open icon"></i> Themen</a>
+                <a href="/app/training.html" class="nav-item active"><i class="fa-solid fa-bullseye icon"></i> Training</a>
+                <a href="/app/pruefungen.html" class="nav-item"><i class="fa-solid fa-file-signature icon"></i> Prüfungen</a>
+                <a href="/app/statistik.html" class="nav-item"><i class="fa-solid fa-chart-simple icon"></i> Statistik</a>
+                <a href="/app/einstellungen.html" class="nav-item"><i class="fa-solid fa-gear icon"></i> Einstellungen</a>
             </nav>
         </aside>
 
         <main class="main-content">
             <header class="app-header">
                 <div class="header-right">
-                    <a href="#hilfe" class="header-link"><i class="fa-regular fa-circle-question"></i> Hilfe</a>
-                    <a href="#profil" class="header-link"><i class="fa-regular fa-user"></i> Profil</a>
+                    <a href="#hilfe" class="header-link">Hilfe</a>
+                    <a href="#profil" class="header-link">Profil</a>
                 </div>
             </header>
 
-            <section class="exercise-content-body" data-topic='<%= JSON.stringify(topic) %>'>
+            <section class="exercise-content-body">
                 <div class="name-box">
                     <div class="name-text">
-                        <h1 id="topic-name"></h1>
+                        <h1 id="topic-name">Thema wird geladen...</h1>
                         <p id="topic-description"></p>
                     </div>
                 </div>
 
-                <!-- Einzelne Aufgaben -->
-                <div class="exercise-content">
-                    <div class="card progress-card">
-                        <h2>Mein Lernfortschritt</h2>
-                        <div class="progress-wrapper">
-                            <div class="progress-ring-container">
-                                <div class="progress-ring">
-                                    <span class="overall-progress-text">72%</span>
-                                </div>
-                            </div>
-                            <div class="progress-details">
-                                <h3>Gesamtfortschritt</h3>
-                                <p class="status-good">Sehr gut! Weiter so!</p>
-                                <div class="progress-bar-bg">
-                                    <div class="progress-bar-fill" style="width: 0%;"></div>
-                                </div>
-                                <p class="sub-text">Du bist auf einem sehr guten Weg.</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="topic-subtata" style="display: block;">
-                        <h2>Choose a subcategory</h2>
-                        <div class="subdata">
-
-                        </div>
-                    </div>
-
-                    <div class="exercise-container" style="display: none;">
-                        <h2></h2>
-                        <div class="exercise">
-                            <div class="question-card">
-                                <h2>Exercise n</h2>
-                                <h3></h3>
-                            </div>
-                        </div>
-                    </div>
-
+                <div class="topic-subdata" style="display: block;">
+                    <h2>Wähle eine Subkategorie</h2>
+                    <div class="subdata" style="display: flex; flex-direction: column; gap: 12px; margin-top: 16px;"></div>
                 </div>
+
+                <div class="exercise-container" style="display: none;"></div>
             </section>
         </main>
     </div>
